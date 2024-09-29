@@ -1,9 +1,10 @@
 import "./globals.css";
-import Header from "@/components/Global/Header";
 import { Tajawal } from "next/font/google";
+import { Providers } from "@/app/providers";
 import Footer from "@/components/Global/Footer";
-import { Providers } from "./providers";
-import NextTopLoader from "nextjs-toploader";
+import Header from "@/components/Global/Header";
+import AdminRightBar from "@/components/other/AdminRightBar";
+import UserRightBar from "@/components/other/UserRightBar";
 
 const font = Tajawal({
   weight: ["300", "500", "800", "900"],
@@ -15,7 +16,7 @@ const font = Tajawal({
 });
 
 export const metadata = {
-  title: "M.Commerce",
+  title: "User",
   description: "One of the MARO-SYSTEMS System",
 };
 
@@ -25,9 +26,9 @@ export default function RootLayout({ children }) {
       <body className={`${font.className} antialiased px-14 py-4`}>
         <Providers>
           <Header />
-          <main className="flex-grow">
-            <NextTopLoader color="#E11D48" crawl={false} showSpinner={false} />
-            {children}
+          <main className="py-8 flex flex-row items-start justify-start gap-10">
+            <AdminRightBar />
+            <div className="flex-1">{children}</div>
           </main>
           <Footer />
         </Providers>
